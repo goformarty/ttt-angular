@@ -29,15 +29,23 @@ export class BoardComponent {
     let remaining = 0;
     // tslint:disable-next-line:prefer-const
     for (let i in this.grid) {
-      if ( this.grid[i] === undefined ) {
-       remaining++;
+      if (this.grid[i] === undefined) {
+        remaining++;
       }
     }
     return remaining;
   }
 
-  private isValid(position: number) {
+  private isValid(position: number): boolean {
+    return (this.isValidRange(position) && this.isPositionEmpty(position));
+  }
+
+  private isValidRange(position: number): boolean {
     return (position >= 0 && position <= 8);
+  }
+
+  private isPositionEmpty(position: number): boolean {
+    return (this.grid[position] === undefined);
   }
 }
 

@@ -41,5 +41,12 @@ describe('BoardComponent', () => {
       board.placeMark('X', -1);
       expect(board.returnMark(-1)).toBeUndefined();
     });
+
+    it('does not place a mark when position already taken', () => {
+      const board = new BoardComponent();
+      board.placeMark('X', 3);
+      board.placeMark('O', 3);
+      expect(board.returnMark(3)).toEqual('X');
+    });
   });
 });
