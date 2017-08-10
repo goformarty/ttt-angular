@@ -10,7 +10,7 @@ export class GameComponent {
 
   currentPlayer = 'X';
 
-  advancePlayer() {
+  changePlayer() {
     this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
   }
 

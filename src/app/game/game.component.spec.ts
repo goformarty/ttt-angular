@@ -30,7 +30,7 @@ describe('GameComponent', () => {
     });
     it('changes current player to player O after player X', () => {
       const game = new GameComponent();
-      game.advancePlayer();
+      game.changePlayer();
       expect(game.currentPlayer).toEqual('O');
     });
  });
