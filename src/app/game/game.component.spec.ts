@@ -28,7 +28,7 @@ describe('GameComponent', () => {
       const game = new GameComponent();
       expect(game.currentPlayer).toEqual('X');
     });
-    it('changes current player to player O after player X moved', () => {
+    it('changes current player to player O after player X', () => {
       const game = new GameComponent();
       game.advancePlayer();
       expect(game.currentPlayer).toEqual('O');
