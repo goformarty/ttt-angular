@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpecHelper } from '../spec-helper/spec.helper';
 
 @Component({
   selector: 'app-board',
@@ -17,23 +18,20 @@ export class BoardComponent {
 
   placeMark(mark: string, position: number) {
     if (this.isValid(position)) {
-      this.grid[position] = mark;
+      this.grid[position - 1] = mark;
     }
   }
 
   returnMark(position: number) {
-    return this.grid[position];
+    return this.grid[position - 1];
   }
 
   private remainingMoves() {
-    let remaining = 0;
-    // tslint:disable-next-line:prefer-const
-    for (let i in this.grid) {
-      if (this.grid[i] === undefined) {
-        remaining++;
-      }
-    }
-    return remaining;
+    const remaining = this.grid.filter(
+      function (value) {
+        return value === undefined;
+      });
+    return remaining.length;
   }
 
   private isValid(position: number): boolean {
@@ -41,12 +39,10 @@ export class BoardComponent {
   }
 
   private isValidRange(position: number): boolean {
-    return (position >= 0 && position <= 8);
+    return (position >= 1 && position <= 9);
   }
 
   private isPositionEmpty(position: number): boolean {
     return (this.grid[position] === undefined);
   }
 }
-
-
