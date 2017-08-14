@@ -8,12 +8,20 @@ import { SpecHelper } from '../spec-helper/spec.helper';
 })
 export class BoardComponent {
   private size = 9;
-  private grid: Array<any> = new Array<any>(this.size);
+  grid: Array<any> = new Array<any>(this.size);
 
   constructor() { }
 
   isBoardEmpty(): boolean {
-    return (this.remainingMoves() === 0) ? true : false;
+    return (this.remainingMoves() === 9) ? true : false;
+  }
+
+  isValid(position: number): boolean {
+    return (this.isValidRange(position) && this.isPositionEmpty(position));
+  }
+
+  printBoard() {
+    console.log(this.grid);
   }
 
   placeMark(mark: string, position: number) {
@@ -26,16 +34,17 @@ export class BoardComponent {
     return this.grid[position - 1];
   }
 
-  private remainingMoves() {
-    const remaining = this.grid.filter(
-      function (value) {
-        return value === undefined;
-      });
-    return remaining.length;
-  }
+  // remainingMoves() {
+  //  let remaining = this.grid.filter(value => value === undefined);
+  //   return remaining.length;
+  // }
 
-  private isValid(position: number): boolean {
-    return (this.isValidRange(position) && this.isPositionEmpty(position));
+  remainingMoves() {
+    let remaining = 0;
+    for (let i = 0; i < 9; i++) {
+      if (this.grid[i] === undefined) { remaining++; }
+    }
+    return remaining;
   }
 
   private isValidRange(position: number): boolean {

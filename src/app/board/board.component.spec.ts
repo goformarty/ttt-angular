@@ -26,7 +26,8 @@ describe('BoardComponent', () => {
 
   describe('board construction', () => {
     it('creates an empty board', () => {
-      expect(component.isBoardEmpty()).toEqual(true);
+      const board = new BoardComponent();
+      expect(board.isBoardEmpty()).toEqual(true);
     });
   });
 
@@ -37,9 +38,11 @@ describe('BoardComponent', () => {
       expect(board.returnMark(1)).toEqual('X');
     });
 
-    it('does not place a mark outside the board', () => {
+   it('does not place a mark outside the board', () => {
       const board = new BoardComponent();
+
       board.placeMark('X', 0);
+
       expect(board.returnMark(0)).toBeUndefined();
     });
 
