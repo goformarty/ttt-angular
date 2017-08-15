@@ -16,9 +16,6 @@ export class GameComponent {
 
   currentPlayer = 'X';
 
-  printBoard() {
-    this.board.printBoard();
-  }
   makeMove(position: number) {
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);

@@ -22,13 +22,8 @@ export class BoardComponent {
     return (this.remainingMoves() === 0) ? true : false;
   }
 
-
   isValid(position: number): boolean {
     return (this.isValidRange(position) && this.isPositionEmpty(position));
-  }
-
-  printBoard() {
-    console.log(this.grid);
   }
 
   placeMark(mark: string, position: number) {
@@ -39,11 +34,6 @@ export class BoardComponent {
 
   returnMark(position: number) {
     return this.grid[position - 1];
-  }
-
-  isBigEnough(element, index, array) {
-    console.log(element);
-   return (element !== undefined );
   }
 
   // remainingMoves(): number {

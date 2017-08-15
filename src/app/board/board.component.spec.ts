@@ -41,7 +41,7 @@ describe('BoardComponent', () => {
   });
 
   describe('Board is full', () => {
-    it('an empty board that is not full', () => {
+    it('an empty board is not full', () => {
       const board = new BoardComponent();
 
       expect(board.isBoardFull()).toEqual(false);
@@ -50,7 +50,7 @@ describe('BoardComponent', () => {
     it('creates a full board', () => {
       const board = SpecHelper.setupBoard('X', 'X', 'X', 'O', 'X', 'X', 'X', 'X', 'X');
 
-      expect(board.isBoardEmpty()).toEqual(false);
+      expect(board.isBoardFull()).toEqual(true);
     });
   });
 
