@@ -36,7 +36,7 @@ export class BoardComponent {
     return this.grid[position - 1];
   }
 
-  remainingMoves() {
+  private remainingMoves() {
     let remaining = 0;
     for (let i = 0; i < 9; i++) {
       if (this.grid[i] === undefined) { remaining++; }
