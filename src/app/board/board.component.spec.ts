@@ -71,7 +71,7 @@ describe('BoardComponent', () => {
       expect(board.returnMark(0)).toBeUndefined();
     });
 
-    it('does not place a mark when position already git taken', () => {
+    it('does not place a mark when position already taken', () => {
       const board = SpecHelper.setupBoard('X', 'X', 'X', 'O', 'X', 'X', 'X', 'X', 'X');
 
       board.placeMark('O', 3);
