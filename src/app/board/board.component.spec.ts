@@ -28,7 +28,7 @@ describe('BoardComponent', () => {
     it('creates an empty board', () => {
       const board = new BoardComponent();
 
-      expect(board.isBoardEmpty()).toEqual(false);
+      expect(board.isBoardEmpty()).toEqual(true);
     });
 
     it('adds move to an empty board', () => {
@@ -71,7 +71,7 @@ describe('BoardComponent', () => {
       expect(board.returnMark(0)).toBeUndefined();
     });
 
-    it('does not place a mark when position already taken', () => {
+    it('does not place a mark when position already git taken', () => {
       const board = SpecHelper.setupBoard('X', 'X', 'X', 'O', 'X', 'X', 'X', 'X', 'X');
 
       board.placeMark('O', 3);
