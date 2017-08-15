@@ -14,6 +14,4 @@ export class SpecHelper {
         board.placeMark(args[8], 9);
         return board;
     }
-    constructor() {}
-
 }
