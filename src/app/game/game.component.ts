@@ -24,14 +24,21 @@ export class GameComponent {
   }
 
   isDraw() {
-    if ((!this.isWon()) && (this.board.isBoardFull()) ) {
+    if ((!this.isWon()) && (this.board.isBoardFull())) {
       return true;
     } else {
       return false;
     }
   }
 
-  isWon() {
+  checkingStuff(): any {
+    console.log(this.board.returnMark(1));
+  }
+
+  isWon(): boolean {
+    if (this.checkRows()) {
+      return true;
+    }
     return false;
   }
 
@@ -39,4 +46,12 @@ export class GameComponent {
     this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
   }
 
+  private checkRows() {
+    for (let i = 1; i <= 7; i = i + 3) {
+      // tslint:disable-next-line:max-line-length
+      if (this.board.returnMark(i) !== undefined && this.board.returnMark(i) === this.board.returnMark(i + 1) && this.board.returnMark(i) === this.board.returnMark(i + 2)) {
+        return true;
+      }
+    }
+  }
 }
