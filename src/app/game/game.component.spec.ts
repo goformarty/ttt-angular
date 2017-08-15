@@ -46,7 +46,6 @@ describe('determines a draw', () => {
   it('determines empty board is not a draw', () => {
     const board = new BoardComponent();
     const game = new GameComponent(board);
-    console.log('empty board remaining moves: ' + board.remainingMoves());
     expect(game.isDraw()).toEqual(false);
   });
   it('determines game not won and with no remaining moves is a draw', () => {

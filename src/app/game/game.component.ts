@@ -27,8 +27,7 @@ export class GameComponent {
   }
 
   isDraw() {
-    console.log('remaining moves: ' + this.board.remainingMoves());
-    if ((!this.isWon()) && (this.board.remainingMoves() === 0) ) {
+    if ((!this.isWon()) && (this.board.isBoardFull()) ) {
       return true;
     } else {
       return false;

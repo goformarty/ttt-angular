@@ -8,13 +8,20 @@ import { SpecHelper } from '../spec-helper/spec.helper';
 })
 export class BoardComponent {
   private size = 9;
-  grid: Array<any> = new Array<any>(this.size);
+  private grid: Array<any>;
 
-  constructor() { }
+  constructor() {
+    this.grid = new Array<any>(this.size);
+  }
 
   isBoardEmpty(): boolean {
-    return (this.remainingMoves() === 9) ? true : false;
+    return (this.remainingMoves() === this.size) ? true : false;
   }
+
+  isBoardFull(): boolean {
+    return (this.remainingMoves() === 0) ? true : false;
+  }
+
 
   isValid(position: number): boolean {
     return (this.isValidRange(position) && this.isPositionEmpty(position));
@@ -34,9 +41,13 @@ export class BoardComponent {
     return this.grid[position - 1];
   }
 
-  // remainingMoves() {
-  //  let remaining = this.grid.filter(value => value === undefined);
-  //   return remaining.length;
+  isBigEnough(element, index, array) {
+    console.log(element);
+   return (element !== undefined );
+  }
+
+  // remainingMoves(): number {
+  //   return this.grid.filter(value => value === undefined).length;
   // }
 
   remainingMoves() {
