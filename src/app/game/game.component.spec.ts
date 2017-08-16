@@ -107,12 +107,28 @@ describe('determines a win', () => {
 
       expect(game.isWon()).toEqual(true);
     });
-    // Given I setup a new game
+  });
+  describe('diagonal win', () => {
+    it('not finished diagonal is not a win', () => {
+      const board = SpecHelper.setupBoard('X', undefined, undefined, undefined, 'X', undefined, undefined, undefined, undefined);
+      const game = new GameComponent(board);
 
-    // I play a drawn game
+      expect(game.isWon()).toEqual(false);
+    });
 
-    // Expect game to be drawn
+    it('diagonal wins when board not full', () => {
+      const board = SpecHelper.setupBoard('X', undefined, undefined, undefined, 'X', undefined, undefined, undefined, 'X');
+      const game = new GameComponent(board);
 
+      expect(game.isWon()).toEqual(true);
+    });
+
+    it('diagonal wins when board full', () => {
+      const board = SpecHelper.setupBoard('X', 'O', 'X', 'X', 'X', 'O', 'O', 'O', 'X');
+      const game = new GameComponent(board);
+
+      expect(game.isWon()).toEqual(true);
+    });
   });
 });
 

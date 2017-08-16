@@ -36,7 +36,7 @@ export class GameComponent {
   }
 
   isWon(): boolean {
-    if (this.checkRows() || this.checkColumns()) {
+    if (this.checkRows() || this.checkColumns() || this.checkDiagonals()) {
       return true;
     }
     return false;
@@ -59,6 +59,15 @@ export class GameComponent {
     for (let i = 1; i <= 3; i++) {
       // tslint:disable-next-line:max-line-length
       if (this.board.returnMark(i) !== undefined && this.board.returnMark(i) === this.board.returnMark(i + 3) && this.board.returnMark(i + 3) === this.board.returnMark(i + 6)) {
+        return true;
+      }
+    }
+  }
+
+  private checkDiagonals() {
+    for (let i = 1, j = 4; i <= 3; i = i + 2, j = j - 2) {
+      // tslint:disable-next-line:max-line-length
+      if (this.board.returnMark(i) !== undefined && this.board.returnMark(i) === this.board.returnMark(i + j) && this.board.returnMark(i + j) === this.board.returnMark(i + 2 * j)) {
         return true;
       }
     }
