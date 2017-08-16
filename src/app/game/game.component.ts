@@ -14,15 +14,22 @@ export class GameComponent {
     this.board = board;
   }
 
+  players = ['X', 'O'];
+  currentPlayer = this.players[0];
 
-  currentPlayer = 'X';
+  // board positions
+  // [1] [2] [3]
+  // [4] [5] [6]
+  // [7] [8] [9]
+
+  private rows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+  private columns = [[1, 4, 7], [2, 5, 7], [3, 6, 9]];
 
   makeMove(position: number) {
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
       this.toggleCurrentPlayer(this.board);
     }
-
   }
 
   isDraw() {
@@ -41,43 +48,57 @@ export class GameComponent {
   }
 
   private toggleCurrentPlayer(board: BoardComponent) {
-    // this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
 
     (this.board.remainingMoves() % 2 !== 0) ?
-    this.currentPlayer = 'X' :
-    this.currentPlayer = 'O';
-
+      this.currentPlayer = this.players[0] :
+      this.currentPlayer = this.players[1];
   }
 
+  private isAnyUndefined(row: Array<any>): number {
+    return row.filter(x => typeof x === 'undefined').length;
+  }
 
   private checkRows() {
-  for (let position = 1; position <= 7; position = position + 3) {
-    if (this.board.returnMark(position) !== undefined &&
-      this.board.returnMark(position) === this.board.returnMark(position + 1) &&
-      this.board.returnMark(position) === this.board.returnMark(position + 2)) {
-      return true;
+    for (let i = 0; i < this.rows.length; i++) {
+      if (this.isRowTheSame(this.rows[i])) {
+        return true;
+      }
     }
   }
-}
+
+  private isRowTheSame(row: Array<number>) {
+    // if (this.isAnyUndefined(row) > 0) {
+      const mark1 = this.board.returnMark(row[0]);
+      const mark2 = this.board.returnMark(row[1]);
+      const mark3 = this.board.returnMark(row[2]);
+
+      console.log(mark1 + ' ' + mark2 + ' ' + mark3);
+      if ((mark1 === mark2) &&
+        (mark2 === mark3)) {
+          console.log('meow wow');
+        return true;
+      }
+   // }
+  }
 
   private checkColumns() {
-  for (let i = 1; i <= 3; i++) {
-    if (this.board.returnMark(i) !== undefined &&
-      this.board.returnMark(i) === this.board.returnMark(i + 3) &&
-      this.board.returnMark(i + 3) === this.board.returnMark(i + 6)) {
-      return true;
+    for (let i = 1; i <= 3; i++) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + 3) &&
+        this.board.returnMark(i + 3) === this.board.returnMark(i + 6)) {
+        return true;
+      }
     }
   }
-}
 
   private checkDiagonals() {
-  for (let i = 1, j = 4; i <= 3; i = i + 2, j = j - 2) {
-    if (this.board.returnMark(i) !== undefined &&
-      this.board.returnMark(i) === this.board.returnMark(i + j) &&
-      this.board.returnMark(i + j) === this.board.returnMark(i + 2 * j)) {
-      return true;
+    for (let i = 1, j = 4; i <= 3; i = i + 2, j = j - 2) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + j) &&
+        this.board.returnMark(i + j) === this.board.returnMark(i + 2 * j)) {
+        return true;
+      }
     }
   }
-}
 
 }
