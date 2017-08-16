@@ -43,40 +43,70 @@ describe('current player', () => {
 });
 
 describe('determines a draw', () => {
-  it('determines empty board is not a draw', () => {
+  it('empty board is not a draw', () => {
     const board = new BoardComponent();
     const game = new GameComponent(board);
 
     expect(game.isDraw()).toEqual(false);
   });
-  it('determines game not won and with no remaining moves is a draw', () => {
+  it('game not won and with no remaining moves is a draw', () => {
     const board = SpecHelper.setupBoard('X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X');
     const game = new GameComponent(board);
 
     expect(game.isDraw()).toEqual(true);
   });
+});
 
-  describe('determines a win', () => {
-    it('determines empty board is not a win', () => {
-      const board = new BoardComponent();
-      const game = new GameComponent(board);
+describe('determines a win', () => {
+  it('empty board is not a win', () => {
+    const board = new BoardComponent();
+    const game = new GameComponent(board);
 
-      expect(game.isWon()).toEqual(false);
-    });
-
-    it('determines not finshed top row is not a win', () => {
+    expect(game.isWon()).toEqual(false);
+  });
+  describe('row win', () => {
+    it('not finshed top row is not a win', () => {
       const board = SpecHelper.setupBoard('X', 'X', undefined, undefined, undefined, undefined, undefined, undefined, undefined);
       const game = new GameComponent(board);
 
       expect(game.isWon()).toEqual(false);
     });
-    it('determines a top row win', () => {
-      const board = SpecHelper.setupBoard('X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'O');
+
+    it('top row wins when board not full', () => {
+      const board = SpecHelper.setupBoard('X', 'X', 'X', undefined, undefined, undefined, undefined, undefined, undefined);
       const game = new GameComponent(board);
 
       expect(game.isWon()).toEqual(true);
     });
 
+    it('top row wins when board full', () => {
+      const board = SpecHelper.setupBoard('X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'O');
+      const game = new GameComponent(board);
+
+      expect(game.isWon()).toEqual(true);
+    });
+  });
+  describe('colummn win', () => {
+    it('not finished first column is not a win', () => {
+      const board = SpecHelper.setupBoard('X', undefined, undefined, 'X', undefined, undefined, undefined, undefined, undefined);
+      const game = new GameComponent(board);
+
+      expect(game.isWon()).toEqual(false);
+    });
+
+    it('first column wins when board not full', () => {
+      const board = SpecHelper.setupBoard('X', undefined, undefined, 'X', undefined, undefined, 'X', undefined, undefined);
+      const game = new GameComponent(board);
+
+      expect(game.isWon()).toEqual(true);
+    });
+
+    it('column wins when board full', () => {
+      const board = SpecHelper.setupBoard('X', undefined, undefined, 'X', undefined, undefined, 'X', undefined, undefined);
+      const game = new GameComponent(board);
+
+      expect(game.isWon()).toEqual(true);
+    });
     // Given I setup a new game
 
     // I play a drawn game
@@ -85,3 +115,4 @@ describe('determines a draw', () => {
 
   });
 });
+

@@ -36,7 +36,7 @@ export class GameComponent {
   }
 
   isWon(): boolean {
-    if (this.checkRows()) {
+    if (this.checkRows() || this.checkColumns()) {
       return true;
     }
     return false;
@@ -54,4 +54,14 @@ export class GameComponent {
       }
     }
   }
+
+    private checkColumns() {
+    for (let i = 1; i <= 3; i++) {
+      // tslint:disable-next-line:max-line-length
+      if (this.board.returnMark(i) !== undefined && this.board.returnMark(i) === this.board.returnMark(i + 3) && this.board.returnMark(i + 3) === this.board.returnMark(i + 6)) {
+        return true;
+      }
+    }
+  }
+
 }
