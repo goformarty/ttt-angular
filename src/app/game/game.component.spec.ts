@@ -74,7 +74,6 @@ describe('determines a win', () => {
 
     it('top row wins when board not full', () => {
       const board = SpecHelper.setupBoard('X', 'X', 'X', undefined, undefined, undefined, undefined, undefined, undefined);
-      // const board = SpecHelper.setupBoard('X', 'A', 'A', 'D', 'D', 'D', undefined, undefined, undefined);
       const game = new GameComponent(board);
 
       expect(game.isWon()).toEqual(true);
