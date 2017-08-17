@@ -17,14 +17,6 @@ export class GameComponent {
   players = ['X', 'O'];
   currentPlayer = this.players[0];
 
-  // board positions
-  // [1] [2] [3]
-  // [4] [5] [6]
-  // [7] [8] [9]
-
-  private rows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-  private columns = [[1, 4, 7], [2, 5, 7], [3, 6, 9]];
-
   makeMove(position: number) {
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
@@ -33,55 +25,31 @@ export class GameComponent {
   }
 
   isDraw() {
-    if ((!this.isWon()) && (this.board.isBoardFull())) {
-      return true;
-    } else {
-      return false;
-    }
+    return ((!this.isWon()) && (this.board.isBoardFull()));
   }
 
   isWon(): boolean {
-    if (this.checkRows() || this.checkColumns() || this.checkDiagonals()) {
-      return true;
+    return (this.checkRows() || this.checkColumns() || this.checkDiagonals());
+  }
+
+  private toggleCurrentPlayer(board: BoardComponent) {
+    (this.board.remainingMoves() % 2 === 0) ?
+      this.currentPlayer = this.players[1] :
+      this.currentPlayer = this.players[0];
+  }
+
+  private checkRows(): boolean {
+    for (let i = 1; i <= 7; i = i + 3) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + 1) &&
+        this.board.returnMark(i + 1) === this.board.returnMark(i + 2)) {
+        return true;
+      }
     }
     return false;
   }
 
-  private toggleCurrentPlayer(board: BoardComponent) {
-
-    (this.board.remainingMoves() % 2 !== 0) ?
-      this.currentPlayer = this.players[0] :
-      this.currentPlayer = this.players[1];
-  }
-
-  private isAnyUndefined(row: Array<any>): number {
-    return row.filter(x => typeof x === 'undefined').length;
-  }
-
-  private checkRows() {
-    for (let i = 0; i < this.rows.length; i++) {
-      if (this.isRowTheSame(this.rows[i])) {
-        return true;
-      }
-    }
-  }
-
-  private isRowTheSame(row: Array<number>) {
-    // if (this.isAnyUndefined(row) > 0) {
-      const mark1 = this.board.returnMark(row[0]);
-      const mark2 = this.board.returnMark(row[1]);
-      const mark3 = this.board.returnMark(row[2]);
-
-      console.log(mark1 + ' ' + mark2 + ' ' + mark3);
-      if ((mark1 === mark2) &&
-        (mark2 === mark3)) {
-          console.log('meow wow');
-        return true;
-      }
-   // }
-  }
-
-  private checkColumns() {
+  private checkColumns(): boolean {
     for (let i = 1; i <= 3; i++) {
       if (this.board.returnMark(i) !== undefined &&
         this.board.returnMark(i) === this.board.returnMark(i + 3) &&
@@ -89,9 +57,10 @@ export class GameComponent {
         return true;
       }
     }
+    return false;
   }
 
-  private checkDiagonals() {
+  private checkDiagonals(): boolean {
     for (let i = 1, j = 4; i <= 3; i = i + 2, j = j - 2) {
       if (this.board.returnMark(i) !== undefined &&
         this.board.returnMark(i) === this.board.returnMark(i + j) &&
@@ -99,6 +68,6 @@ export class GameComponent {
         return true;
       }
     }
+    return false;
   }
-
 }

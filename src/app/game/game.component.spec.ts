@@ -73,8 +73,8 @@ describe('determines a win', () => {
     });
 
     it('top row wins when board not full', () => {
-      // const board = SpecHelper.setupBoard('X', 'X', 'X', undefined, undefined, undefined, undefined, undefined, undefined);
-      const board = SpecHelper.setupBoard('A', 'A', 'A', 'D', 'D', 'D', undefined, undefined, undefined);
+      const board = SpecHelper.setupBoard('X', 'X', 'X', undefined, undefined, undefined, undefined, undefined, undefined);
+      // const board = SpecHelper.setupBoard('X', 'A', 'A', 'D', 'D', 'D', undefined, undefined, undefined);
       const game = new GameComponent(board);
 
       expect(game.isWon()).toEqual(true);
@@ -87,7 +87,7 @@ describe('determines a win', () => {
       expect(game.isWon()).toEqual(true);
     });
   });
-  describe('colummn win', () => {
+ describe('colummn win', () => {
     it('not finished first column is not a win', () => {
       const board = SpecHelper.setupBoard('X', undefined, undefined, 'X', undefined, undefined, undefined, undefined, undefined);
       const game = new GameComponent(board);
@@ -125,7 +125,7 @@ describe('determines a win', () => {
     });
 
     it('diagonal wins when board full', () => {
-      const board = SpecHelper.setupBoard('X', 'O', 'X', 'X', 'X', 'O', 'O', 'O', );
+      const board = SpecHelper.setupBoard('X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'X');
       const game = new GameComponent(board);
 
       expect(game.isWon()).toEqual(true);
