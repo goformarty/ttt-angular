@@ -14,29 +14,60 @@ export class GameComponent {
     this.board = board;
   }
 
-  currentPlayer = 'X';
+  players = ['X', 'O'];
+  currentPlayer = this.players[0];
 
   makeMove(position: number) {
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
-      this.changePlayer();
+      this.toggleCurrentPlayer(this.board);
     }
   }
 
   isDraw() {
-    if ((!this.isWon()) && (this.board.isBoardFull()) ) {
-      return true;
-    } else {
-      return false;
-    }
+    return ((!this.isWon()) && (this.board.isBoardFull()));
   }
 
-  isWon() {
+  isWon(): boolean {
+    return (this.checkRows() || this.checkColumns() || this.checkDiagonals());
+  }
+
+  private toggleCurrentPlayer(board: BoardComponent) {
+    (this.board.remainingMoves() % 2 === 0) ?
+      this.currentPlayer = this.players[1] :
+      this.currentPlayer = this.players[0];
+  }
+
+  private checkRows(): boolean {
+    for (let i = 1; i <= 7; i = i + 3) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + 1) &&
+        this.board.returnMark(i + 1) === this.board.returnMark(i + 2)) {
+        return true;
+      }
+    }
     return false;
   }
 
-  private changePlayer() {
-    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+  private checkColumns(): boolean {
+    for (let i = 1; i <= 3; i++) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + 3) &&
+        this.board.returnMark(i + 3) === this.board.returnMark(i + 6)) {
+        return true;
+      }
+    }
+    return false;
   }
 
+  private checkDiagonals(): boolean {
+    for (let i = 1, j = 4; i <= 3; i = i + 2, j = j - 2) {
+      if (this.board.returnMark(i) !== undefined &&
+        this.board.returnMark(i) === this.board.returnMark(i + j) &&
+        this.board.returnMark(i + j) === this.board.returnMark(i + 2 * j)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
