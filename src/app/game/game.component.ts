@@ -8,6 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
   providers: [BoardComponent]
 })
 export class GameComponent {
+  @Input() clickedPosition: number;
+  @Input() displayedMark: string;
+
   board: BoardComponent;
 
   constructor(board: BoardComponent) {
@@ -18,10 +21,13 @@ export class GameComponent {
   currentPlayer = this.players[0];
 
   makeMove(position: number) {
+    console.log(this.clickedPosition);
+    console.log(this.board.returnMark(this.clickedPosition));
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
       this.toggleCurrentPlayer(this.board);
     }
+    console.log(this.board.returnMark(this.clickedPosition));
   }
 
   isDraw() {

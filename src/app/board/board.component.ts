@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { SpecHelper } from '../spec-helper/spec.helper';
 
@@ -52,3 +53,4 @@ export class BoardComponent {
     return (this.grid[position] === undefined);
   }
 }
+
