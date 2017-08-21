@@ -50,7 +50,7 @@ export class BoardComponent {
   }
 
   private isPositionEmpty(position: number): boolean {
-    return (this.grid[position] === undefined);
+    return (this.grid[position - 1] === undefined);
   }
 }
 

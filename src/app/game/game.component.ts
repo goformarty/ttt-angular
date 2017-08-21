@@ -8,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   providers: [BoardComponent]
 })
 export class GameComponent {
-  @Input() clickedPosition: number;
-  @Input() displayedMark: string;
-
+  @Input() displayedBoard: Array<string>;
   board: BoardComponent;
 
   constructor(board: BoardComponent) {
@@ -20,14 +18,23 @@ export class GameComponent {
   players = ['X', 'O'];
   currentPlayer = this.players[0];
 
+  makeMove2(position: number) {
+    this.board.placeMark(this.currentPlayer, position);
+    console.log('moves remaining: ' + this.board.remainingMoves());
+    console.log(this.board.returnMark(position));
+    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+    // if (this.board.isValid(position)) {
+    // }
+  }
+
   makeMove(position: number) {
-    console.log(this.clickedPosition);
-    console.log(this.board.returnMark(this.clickedPosition));
+    console.log('trying to place mark at: ' + position);
+    console.log('before move made: ' + this.board.returnMark(position));
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
       this.toggleCurrentPlayer(this.board);
     }
-    console.log(this.board.returnMark(this.clickedPosition));
+    console.log('after move made: ' + this.board.returnMark(position));
   }
 
   isDraw() {

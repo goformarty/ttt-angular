@@ -13,11 +13,43 @@ export class AppComponent {
   board = new BoardComponent();
   game = new GameComponent(this.board);
 
-  clickedPosition: number;
+  player = this.game.currentPlayer;
+  winner: string;
 
-  updateBoard(position: number) {
-    console.log(position);
+  title = 'Tic Tac Toe';
+  isOver = false;
+
+  displayedBoard = new Array(9).fill(null);
+
+
+
+  get status() {
+    return this.isOver ? 'Winner: ' + this.winner :
+      'Player ' + this.player + ' turn';
   }
 
+  winningMove() {
+    console.log('check for winning move ' + this.game.isWon());
+    if (this.game.isWon()) {
+      this.isOver = true;
+      this.winner = this.game.currentPlayer === 'X' ? 'O' : 'X';
+      return true;
+    }
+    if (this.game.isDraw()) {
+      this.isOver = true;
+      this.winner = 'no one, it is a draw!';
+    }
+  }
 
+  updateBoard(position: number) {
+    console.log(this.isOver);
+    if (!this.isOver) {
+      if (this.displayedBoard[position - 1] === null) {
+        this.player = this.game.currentPlayer === 'X' ? 'O' : 'X';
+        this.displayedBoard[position - 1] = this.game.currentPlayer;
+        this.game.makeMove2(position);
+        this.winningMove();
+      }
+    }
+  }
 }
