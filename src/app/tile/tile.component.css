@@ -14,7 +14,7 @@ div {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 50px;
-    color: #ffa13b;
+   
 }
 
 div:hover {
@@ -27,13 +27,11 @@ div:active {
     border: 0;
 }
 
-#game > li.x {
-    
-    color: #ffa13b;
+.xMark {
+    color: #ffa13b
 }
 
-#game > li.o {
-    font-size: 50px;
+.oMark {
     color: #fd5b5b;
 }
 

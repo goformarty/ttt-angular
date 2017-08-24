@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { EventEmitter } from 'events';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tile',
@@ -7,4 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TileComponent {
   @Input() state;
+  @Output() swapColourMark: EventEmitter = new EventEmitter();
+  swapColorMark() {
+  }
 }
+

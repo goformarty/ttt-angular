@@ -8,7 +8,7 @@ import { SpecHelper } from '../spec-helper/spec.helper';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
-  private size = 9;
+  size = 9;
   private grid: Array<any>;
 
   constructor() {

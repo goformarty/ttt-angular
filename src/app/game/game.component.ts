@@ -23,21 +23,16 @@ export class GameComponent {
     console.log('moves remaining: ' + this.board.remainingMoves());
     console.log(this.board.returnMark(position));
     this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-    // if (this.board.isValid(position)) {
-    // }
   }
 
   makeMove(position: number) {
-    console.log('trying to place mark at: ' + position);
-    console.log('before move made: ' + this.board.returnMark(position));
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
       this.toggleCurrentPlayer(this.board);
     }
-    console.log('after move made: ' + this.board.returnMark(position));
   }
 
-  isDraw() {
+  isDraw(): boolean {
     return ((!this.isWon()) && (this.board.isBoardFull()));
   }
 

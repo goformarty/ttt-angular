@@ -13,15 +13,20 @@ export class AppComponent {
   board = new BoardComponent();
   game = new GameComponent(this.board);
 
+  boardLength = this.board.size;
+  boardLineLength = Math.round(Math.sqrt(this.boardLength));
+  boardLineArray = Array.from(Array(this.boardLineLength).keys());
+
+  isPlayerOActive = true;
+
   player = this.game.currentPlayer;
   winner: string;
 
   title = 'Tic Tac Toe';
   isOver = false;
+  oMark: boolean;
 
   displayedBoard = new Array(9).fill(null);
-
-
 
   get status() {
     return this.isOver ? 'Winner: ' + this.winner :
@@ -46,10 +51,19 @@ export class AppComponent {
     if (!this.isOver) {
       if (this.displayedBoard[position - 1] === null) {
         this.player = this.game.currentPlayer === 'X' ? 'O' : 'X';
+        // this.player === 'X' ? (this.xMark = true) : (this.xMark = false);
         this.displayedBoard[position - 1] = this.game.currentPlayer;
         this.game.makeMove2(position);
         this.winningMove();
       }
     }
+  }
+
+  newGame() {
+    this.isOver = false;
+    this.board = new BoardComponent;
+    this.displayedBoard = new Array(9).fill(null);
+    this.game = new GameComponent(this.board);
+    this.player = this.game.currentPlayer;
   }
 }

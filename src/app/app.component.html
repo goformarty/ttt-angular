@@ -3,12 +3,16 @@
   <h1>
     {{title}}
   </h1>
-  <div class="row" *ngFor="let row of [0, 1, 2]">
-    <app-tile *ngFor="let col of [0, 1, 2]" 
-    [state]="displayedBoard[col + row * 3]" 
-    (click)="updateBoard(col + row * 3 + 1)">
-    </app-tile>
+  <div id="board">
+    <div class="row" *ngFor="let row of boardLineArray">
+      <app-tile *ngFor="let col of boardLineArray" 
+      [state]="displayedBoard[col + row * 3]" 
+      (click)="updateBoard(col + row * 3 + 1)">
+      </app-tile>
+    </div>
   </div>
+
   <div class="status">{{status}}</div>
+  <button (click)="newGame()">New Game</button>
 </div>
 
