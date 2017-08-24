@@ -5,14 +5,14 @@
   </h1>
   <div id="board">
     <div class="row" *ngFor="let row of boardLineArray">
-      <app-tile *ngFor="let col of boardLineArray" 
-      [state]="displayedBoard[col + row * 3]" 
-      (click)="updateBoard(col + row * 3 + 1)">
-
-
-    <s>
+      <app-tile *ngFor="let col of boardLineArray"
       
-    </s> 
+      [playerMark]="this.board.returnMark(col + row * 3 + 1)"
+      (click)="makeMove(col + row * 3 + 1)"> 
+      <!-- col + row * 3 from 0 to 8 -->
+      
+
+
       </app-tile>
     </div>
   </div>

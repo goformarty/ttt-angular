@@ -130,5 +130,25 @@ describe('determines a win', () => {
       expect(game.isWon()).toEqual(true);
     });
   });
+  describe('determines game is over', () => {
+    it('empty board is not game over', () => {
+      const board = new BoardComponent();
+      const game = new GameComponent(board);
+
+      expect(game.isOver()).toEqual(false);
+    });
+    it('a won board is game over', () => {
+      const board = SpecHelper.setupBoard('X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'X');
+      const game = new GameComponent(board);
+
+      expect(game.isOver()).toEqual(true);
+    });
+    it('a draw is game over', () => {
+      const board = SpecHelper.setupBoard('X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X');
+      const game = new GameComponent(board);
+
+      expect(game.isOver()).toEqual(true);
+    });
+  });
 });
 

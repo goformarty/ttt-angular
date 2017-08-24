@@ -7,7 +7,7 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent {
-  @Input() state;
+  @Input() playerMark;
   @Output() swapColourMark: EventEmitter = new EventEmitter();
   swapColorMark() {
   }

@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   providers: [GameComponent]
 })
 export class AppComponent {
+  title = 'Tic Tac Toe';
 
   board = new BoardComponent();
   game = new GameComponent(this.board);
@@ -17,53 +18,42 @@ export class AppComponent {
   boardLineLength = Math.round(Math.sqrt(this.boardLength));
   boardLineArray = Array.from(Array(this.boardLineLength).keys());
 
-  isPlayerOActive = true;
 
-  player = this.game.currentPlayer;
+  currentPlayer = this.game.currentPlayer;
   winner: string;
 
-  title = 'Tic Tac Toe';
+
   isOver = false;
   oMark: boolean;
 
   displayedBoard = new Array(9).fill(null);
 
-  get status() {
-    return this.isOver ? 'Winner: ' + this.winner :
-      'Player ' + this.player + ' turn';
+  status = 'Player: X';
+
+  makeMove(position: number) {
+    if (this.game.isStillRunning()) {
+      console.log(position);
+      this.game.makeMove(position);
+      this.updateDisplayedStatus();
+    }
   }
 
-  winningMove() {
-    console.log('check for winning move ' + this.game.isWon());
+  updateDisplayedStatus() {
     if (this.game.isWon()) {
-      this.isOver = true;
-      this.winner = this.game.currentPlayer === 'X' ? 'O' : 'X';
-      return true;
-    }
-    if (this.game.isDraw()) {
-      this.isOver = true;
-      this.winner = 'no one, it is a draw!';
+      this.status = 'Winner: ' + this.game.currentPlayer; 
+    } else {
+      this.status = 'Player: ' + this.game.currentPlayer;
     }
   }
 
-  updateBoard(position: number) {
-    console.log(this.isOver);
-    if (!this.isOver) {
-      if (this.displayedBoard[position - 1] === null) {
-        this.player = this.game.currentPlayer === 'X' ? 'O' : 'X';
-        // this.player === 'X' ? (this.xMark = true) : (this.xMark = false);
-        this.displayedBoard[position - 1] = this.game.currentPlayer;
-        this.game.makeMove2(position);
-        this.winningMove();
-      }
-    }
-  }
+
+ 
 
   newGame() {
     this.isOver = false;
     this.board = new BoardComponent;
     this.displayedBoard = new Array(9).fill(null);
     this.game = new GameComponent(this.board);
-    this.player = this.game.currentPlayer;
+    this.currentPlayer = this.game.currentPlayer;
   }
 }

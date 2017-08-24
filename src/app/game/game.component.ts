@@ -18,18 +18,19 @@ export class GameComponent {
   players = ['X', 'O'];
   currentPlayer = this.players[0];
 
-  makeMove2(position: number) {
-    this.board.placeMark(this.currentPlayer, position);
-    console.log('moves remaining: ' + this.board.remainingMoves());
-    console.log(this.board.returnMark(position));
-    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-  }
-
   makeMove(position: number) {
     if (this.board.isValid(position)) {
       this.board.placeMark(this.currentPlayer, position);
       this.toggleCurrentPlayer(this.board);
     }
+  }
+
+  isOver(): boolean {
+    return (this.isWon() || this.isDraw());
+  }
+
+  isStillRunning(): boolean {
+    return !this.isOver();
   }
 
   isDraw(): boolean {
@@ -41,9 +42,11 @@ export class GameComponent {
   }
 
   private toggleCurrentPlayer(board: BoardComponent) {
-    (this.board.remainingMoves() % 2 === 0) ?
-      this.currentPlayer = this.players[1] :
-      this.currentPlayer = this.players[0];
+    if (this.isStillRunning()) {
+      (this.board.remainingMoves() % 2 === 0) ?
+        this.currentPlayer = this.players[1] :
+        this.currentPlayer = this.players[0];
+    }
   }
 
   private checkRows(): boolean {
