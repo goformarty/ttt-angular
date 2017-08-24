@@ -1,23 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container" style="text-align:center">
-  <h1>
-    {{title}}
-  </h1>
+
+  <h1>{{title}}</h1>
+
   <div id="board">
-    <div class="row" *ngFor="let row of boardLineArray">
-      <app-tile *ngFor="let col of boardLineArray"
-      
+    <div class="row" *ngFor="let row of rows">
+      <app-tile *ngFor="let col of columns"
       [playerMark]="this.board.returnMark(col + row * 3 + 1)"
       (click)="makeMove(col + row * 3 + 1)"> 
-      <!-- col + row * 3 from 0 to 8 -->
-      
-
-
       </app-tile>
     </div>
   </div>
 
   <div class="status">{{status}}</div>
   <button (click)="newGame()">New Game</button>
+
 </div>
 

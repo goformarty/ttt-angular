@@ -14,21 +14,11 @@ export class AppComponent {
   board = new BoardComponent();
   game = new GameComponent(this.board);
 
-  boardLength = this.board.size;
-  boardLineLength = Math.round(Math.sqrt(this.boardLength));
-  boardLineArray = Array.from(Array(this.boardLineLength).keys());
+  boardDimension = Math.round(Math.sqrt(this.board.size));
+  rows = Array.from(Array(this.boardDimension).keys());
+  columns = Array.from(Array(this.boardDimension).keys());
 
-
-  currentPlayer = this.game.currentPlayer;
-  winner: string;
-
-
-  isOver = false;
-  oMark: boolean;
-
-  displayedBoard = new Array(9).fill(null);
-
-  status = 'Player: X';
+  status = 'Player: ' + this.game.currentPlayer;
 
   makeMove(position: number) {
     if (this.game.isStillRunning()) {
@@ -40,20 +30,18 @@ export class AppComponent {
 
   updateDisplayedStatus() {
     if (this.game.isWon()) {
-      this.status = 'Winner: ' + this.game.currentPlayer; 
+      this.status = 'Winner: Player ' + this.game.currentPlayer;
+      alert(this.status);
+    } else if (this.game.isDraw()) {
+      this.status = 'It is a draw!';
     } else {
       this.status = 'Player: ' + this.game.currentPlayer;
     }
   }
 
-
- 
-
   newGame() {
-    this.isOver = false;
     this.board = new BoardComponent;
-    this.displayedBoard = new Array(9).fill(null);
     this.game = new GameComponent(this.board);
-    this.currentPlayer = this.game.currentPlayer;
+    this.status = 'Player: ' + this.game.currentPlayer;
   }
 }
