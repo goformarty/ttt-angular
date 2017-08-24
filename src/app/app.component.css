@@ -21,6 +21,8 @@ h1 {
 }
 
 .status {
+    color: #C1C1C1;
+    margin-bottom: 20px;
     font-size: 25px;
 }
 
@@ -41,7 +43,7 @@ button {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
    border: none;
-   transition: 0.5s; 
+
   }
   
   button:hover {
