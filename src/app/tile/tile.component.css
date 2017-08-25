@@ -14,7 +14,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 50px;
-    color: #ffa13b
+    color: #fd5b5b
    
 }
 
@@ -35,5 +35,9 @@
 
 .oMark {
     color: #fd5b5b;
+}
+
+.disabled {
+    background: #606060; 
 }
 

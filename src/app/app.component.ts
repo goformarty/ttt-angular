@@ -18,7 +18,8 @@ export class AppComponent {
   rows = Array.from(Array(this.boardDimension).keys());
   columns = Array.from(Array(this.boardDimension).keys());
 
-  status = 'Player: ' + this.game.currentPlayer;
+  status = 'Turn: Player ' + this.game.currentPlayer;
+  boardDisabled = false;
 
   makeMove(position: number) {
     if (this.game.isStillRunning()) {
@@ -31,17 +32,19 @@ export class AppComponent {
   updateDisplayedStatus() {
     if (this.game.isWon()) {
       this.status = 'Winner: Player ' + this.game.currentPlayer;
+      this.boardDisabled = true;
       alert(this.status);
     } else if (this.game.isDraw()) {
       this.status = 'It is a draw!';
+      this.boardDisabled = true;
     } else {
-      this.status = 'Player: ' + this.game.currentPlayer;
+      this.status = 'Turn: Player ' + this.game.currentPlayer;
     }
   }
 
   newGame() {
     this.board = new BoardComponent;
     this.game = new GameComponent(this.board);
-    this.status = 'Player: ' + this.game.currentPlayer;
+    this.status = 'Turn: Player ' + this.game.currentPlayer;
   }
 }

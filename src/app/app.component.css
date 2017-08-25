@@ -1,6 +1,6 @@
 .container {
     margin: 0 auto;
-    width: 310px;
+    width: 300px;
 }
 
 #game {
@@ -13,21 +13,26 @@
 }
 
 h1 {
-    padding: 30px;
+    padding: 25px;
+    text-shadow: 1px 2px 6px rgba(255, 255, 255, 0.8) ;
+}
+
+hr {
+    border: 1px white solid; 
 }
 
 #board {
-   height: 330px; 
+   height: 340px; 
 }
 
 .status {
     color: #C1C1C1;
-    margin-bottom: 20px;
-    font-size: 25px;
+    margin-bottom: 12px;
+    font-size: 20px;
 }
 
 button {
-    margin-top: 20px;
+
     background: #ffa55c;
     background-image: -webkit-linear-gradient(top, #ffa55c, #ffac7f);
     background-image: -moz-linear-gradient(top, #ffa55c, #ffac7f);
@@ -39,15 +44,16 @@ button {
     border-radius: 8px; 
     outline: none;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
    border: none;
+   transition-duration: 2s;
 
   }
   
   button:hover {
-    background: #faa076;
+    background-color: #faa076;
     background-image: -webkit-linear-gradient(top, #faa076, #fa806e);
     background-image: -moz-linear-gradient(top, #faa076, #fa806e);
     background-image: -ms-linear-gradient(top, #faa076, #fa806e);

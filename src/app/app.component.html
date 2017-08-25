@@ -2,8 +2,9 @@
 
   <h1>{{title}}</h1>
 
-  <div class="status">{{status}}</div>
+  <hr />
 
+  <div class="status">{{status}}</div>
   <div id="board">
     <div class="row" *ngFor="let row of rows">
       <app-tile *ngFor="let col of columns"
@@ -12,7 +13,7 @@
       </app-tile>
     </div>
   </div>
-  
+
   <button (click)="newGame()">New Game</button>
 
 </div>
