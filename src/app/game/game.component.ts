@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   providers: [BoardComponent]
 })
 export class GameComponent {
+  @Input() displayedBoard: Array<string>;
   board: BoardComponent;
 
   constructor(board: BoardComponent) {
@@ -24,7 +25,15 @@ export class GameComponent {
     }
   }
 
-  isDraw() {
+  isOver(): boolean {
+    return (this.isWon() || this.isDraw());
+  }
+
+  isStillRunning(): boolean {
+    return !this.isOver();
+  }
+
+  isDraw(): boolean {
     return ((!this.isWon()) && (this.board.isBoardFull()));
   }
 
@@ -33,9 +42,11 @@ export class GameComponent {
   }
 
   private toggleCurrentPlayer(board: BoardComponent) {
-    (this.board.remainingMoves() % 2 === 0) ?
-      this.currentPlayer = this.players[1] :
-      this.currentPlayer = this.players[0];
+    if (this.isStillRunning()) {
+      (this.board.remainingMoves() % 2 === 0) ?
+        this.currentPlayer = this.players[1] :
+        this.currentPlayer = this.players[0];
+    }
   }
 
   private checkRows(): boolean {

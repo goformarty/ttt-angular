@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { SpecHelper } from '../spec-helper/spec.helper';
 
@@ -7,7 +8,7 @@ import { SpecHelper } from '../spec-helper/spec.helper';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
-  private size = 9;
+  size = 9;
   private grid: Array<any>;
 
   constructor() {
@@ -49,6 +50,7 @@ export class BoardComponent {
   }
 
   private isPositionEmpty(position: number): boolean {
-    return (this.grid[position] === undefined);
+    return (this.grid[position - 1] === undefined);
   }
 }
+

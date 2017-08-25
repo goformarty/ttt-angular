@@ -1,6 +1,7 @@
 .container {
     margin: 0 auto;
-    width: 400px;
+    width: 300px;
+
 }
 
 #game {
@@ -12,40 +13,53 @@
     margin-bottom: 20px;
 }
 
-#game > li {
-    list-style: none;
-    float: left;
-    overflow: hidden;
-    text-decoration:none;
-    width: 100px;
-    height: 100px;
-    background: #f1f1f1;
-    border: 1px solid #ccc;
-    border-right: 1px solid #fff;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-align: center;
-    padding-top: 20px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+h1 {
+    padding: 25px;
+    text-shadow: 1px 2px 6px rgba(255, 255, 255, 0.8) ;
 }
 
-#game > li:hover {
-    background: #dcdcdc;
+hr {
+    border: 1px white solid; 
 }
 
-#game > li:active {
-    width: 100px;
-    height: 100px;
-    border: 0;
+#board {
+   height: 340px; 
 }
 
-#game > li.x {
-    font-size: 50px;
-    color: #ffa13b;
+.status {
+    color: #C1C1C1;
+    margin-bottom: 12px;
+    font-size: 20px;
 }
 
-#game > li.o {
-    font-size: 50px;
-    color: #fd5b5b;
-}
+button {
+
+    background: #ffa55c;
+    background-image: -webkit-linear-gradient(top, #ffa55c, #ffac7f);
+    background-image: -moz-linear-gradient(top, #ffa55c, #ffac7f);
+    background-image: -ms-linear-gradient(top, #ffa55c, #ffac7f);
+    background-image: -o-linear-gradient(top, #ffa55c, #ffac7f);
+    background-image: linear-gradient(to bottom, #ffa55c, #ffac7f);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px; 
+    outline: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+   border: none;
+   transition-duration: 2s;
+
+  }
+  
+  button:hover {
+    background-color: #faa076;
+    background-image: -webkit-linear-gradient(top, #faa076, #fa806e);
+    background-image: -moz-linear-gradient(top, #faa076, #fa806e);
+    background-image: -ms-linear-gradient(top, #faa076, #fa806e);
+    background-image: -o-linear-gradient(top, #faa076, #fa806e);
+    background-image: linear-gradient(to bottom, #faa076, #fa806e);
+    text-decoration: none;
+  }
+
