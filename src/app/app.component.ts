@@ -21,7 +21,7 @@ export class AppComponent {
   status = 'Turn: Player ' + this.game.currentPlayer;
   statusFinished = false;
 
-  makeMove(position: number): void {
+  boardClicked(position: number): void {
     if (this.game.isStillRunning()) {
       this.game.makeMove(position);
       this.updateDisplayedStatus();

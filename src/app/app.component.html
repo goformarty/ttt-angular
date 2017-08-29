@@ -12,7 +12,7 @@
     <div class="row" *ngFor="let row of rows">
       <app-tile *ngFor="let col of columns"
       [playerMark]="this.board.returnMark(col + row * 3 + 1)"
-      (click)="makeMove(col + row * 3 + 1)"> 
+      (click)="boardClicked(col + row * 3 + 1)"> 
       </app-tile>
     </div>
   </div>
