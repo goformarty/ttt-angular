@@ -19,32 +19,64 @@ export class AppComponent {
   columns = Array.from(Array(this.boardDimension).keys());
 
   status = 'Turn: Player ' + this.game.currentPlayer;
-  boardDisabled = false;
+  statusFinished = false;
 
-  makeMove(position: number) {
+  makeMove(position: number): void {
     if (this.game.isStillRunning()) {
-      console.log(position);
       this.game.makeMove(position);
       this.updateDisplayedStatus();
     }
   }
 
-  updateDisplayedStatus() {
+  updateDisplayedStatus(): void {
     if (this.game.isWon()) {
-      this.status = 'Winner: Player ' + this.game.currentPlayer;
-      this.boardDisabled = true;
-      alert(this.status);
+      this.updateStatusWon();
     } else if (this.game.isDraw()) {
-      this.status = 'It is a draw!';
-      this.boardDisabled = true;
+      this.updateStatusDraw();
     } else {
-      this.status = 'Turn: Player ' + this.game.currentPlayer;
+      this.updateStatusTurn();
     }
   }
 
-  newGame() {
-    this.board = new BoardComponent;
-    this.game = new GameComponent(this.board);
+  newGame(): void {
+    this.restartGameBoard();
+    this.restartStatus();
+  }
+
+  private restartGameBoard(): void {
+    this.clearBoard();
+    this.clearGame();
+  }
+
+  private restartStatus(): void {
+    this.statusFinished = false;
     this.status = 'Turn: Player ' + this.game.currentPlayer;
+  }
+
+  private clearBoard(): BoardComponent {
+    return this.board = new BoardComponent;
+  }
+
+  private clearGame(): GameComponent {
+    return this.game = new GameComponent(this.board);
+  }
+
+  private updateStatusWon(): void {
+    this.status = 'Winner: Player ' + this.game.currentPlayer;
+    this.statusGameIsOver();
+  }
+
+  private updateStatusDraw(): void {
+    this.status = 'It is a draw!';
+    this.statusGameIsOver();
+  }
+
+  private updateStatusTurn(): void {
+    this.status = 'Turn: Player ' + this.game.currentPlayer;
+  }
+
+  private statusGameIsOver(): void {
+    this.statusFinished = true;
+    alert(this.status);
   }
 }
