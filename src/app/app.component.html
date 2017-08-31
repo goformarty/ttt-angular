@@ -3,13 +3,16 @@
   <h1>{{title}}</h1>
   <hr />
 
-  <div class="status">{{status}}</div>
+  <div class="status"
+  [class.statusFinished] = "statusFinished">
+    {{status}}
+  </div>
   
   <div id="board">
     <div class="row" *ngFor="let row of rows">
       <app-tile *ngFor="let col of columns"
       [playerMark]="this.board.returnMark(col + row * 3 + 1)"
-      (click)="makeMove(col + row * 3 + 1)"> 
+      (click)="boardClicked(col + row * 3 + 1)"> 
       </app-tile>
     </div>
   </div>

@@ -20,6 +20,7 @@ h1 {
 
 hr {
     border: 1px white solid; 
+    margin-bottom: 10px;
 }
 
 #board {
@@ -27,13 +28,18 @@ hr {
 }
 
 .status {
-    color: #C1C1C1;
-    margin-bottom: 12px;
-    font-size: 20px;
+    color: #E8E8E8;
+    margin-bottom: 16px;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+}
+
+
+.statusFinished {
+    color: #ffa9a9
 }
 
 button {
-
     background: #ffa55c;
     background-image: -webkit-linear-gradient(top, #ffa55c, #ffac7f);
     background-image: -moz-linear-gradient(top, #ffa55c, #ffac7f);
@@ -50,7 +56,6 @@ button {
     text-decoration: none;
    border: none;
    transition-duration: 2s;
-
   }
   
   button:hover {

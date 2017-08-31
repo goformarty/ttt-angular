@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+import { AppComponent } from './../app.component';
 import { Component, Input, Output } from '@angular/core';
 
 @Component({
@@ -8,8 +8,5 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class TileComponent {
   @Input() playerMark;
-  @Output() swapColourMark: EventEmitter = new EventEmitter();
-  swapColorMark() {
-  }
 }
 
