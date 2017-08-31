@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
   providers: [BoardComponent]
 })
 export class GameComponent {
-  @Input() displayedBoard: Array<string>;
   board: BoardComponent;
 
   constructor(board: BoardComponent) {

@@ -27,17 +27,3 @@
     height: 100px;
     border: 0;
 }
-
-
-.xMark {
-    color: #ffa13b
-}
-
-.oMark {
-    color: #fd5b5b;
-}
-
-.disabled {
-    background: #606060; 
-}
-
