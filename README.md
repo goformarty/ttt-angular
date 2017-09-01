@@ -6,7 +6,7 @@ This is 2-Player Tic Tac Toe game made with Angular4 & Typescript.
 
 ---
 
-[![Game screenshot](https://user-images.githubusercontent.com/14976588/29963895-44810012-8f00-11e7-853d-09a83ad901c4.png "Game screenshot")
+![Game screenshot](https://user-images.githubusercontent.com/14976588/29963895-44810012-8f00-11e7-853d-09a83ad901c4.png "Game screenshot")
 
 ## Demo
 You can test a fully working live demo at https://goformarty.github.io/ttt-angular/.
