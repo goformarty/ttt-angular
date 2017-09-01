@@ -69,5 +69,5 @@ button:hover {
   }
 
 .displayModal {
-    color: blue;
+    display: none;
 }

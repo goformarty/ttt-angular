@@ -26,7 +26,6 @@ export class AppComponent {
     if (this.game.isStillRunning()) {
       this.game.makeMove(position);
       this.updateDisplayedStatus();
-      this.displayModal = true;
     }
   }
 
@@ -79,6 +78,7 @@ export class AppComponent {
 
   private statusGameIsOver(): void {
     this.statusFinished = true;
+    this.displayModal = true;
     alert(this.status);
   }
 }
