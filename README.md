@@ -24,7 +24,52 @@ You can test a fully working live demo at https://goformarty.github.io/ttt-angul
 
 ---
 
-## Setup
+## User stories:
+
+#### Starting a new game  
+
+    As a player
+    I want to start a new game,
+    so that I can see an empty 3x3 grid.  
+
+    As a Player “X”
+    I want to have my turn first, 
+    so that Player “O” will have second turn.
+
+#### Making a move  
+    As a player,
+    I want to place my marker on the board, 
+    so that I can make my move.
+
+    As a player, 
+    I want to see whose turn it is, 
+    so that this player can make a move.
+
+    As a player, 
+    I want to see available moves, 
+    so that I can know where can I make my move.
+
+#### > Game over  
+
+    As a player, 
+    I want to be told when the game is over,
+    so that whether I won or not.
+    
+    As a player, 
+    I want to see the score board, 
+    so that I can know how many points I have.
+    
+    As a player, 
+    I want the score board to update automatically after each game, 
+    so that I know how many points I have.
+    
+    As a player, 
+    I want the game to restart as soon as it’s over, 
+    so that I can choose to play again.
+    
+---
+
+## Local setup
 Clone this repo and run `npm install` to install all the dependencies.
 
 ---
