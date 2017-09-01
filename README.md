@@ -47,7 +47,7 @@ You can test a fully working live demo at https://goformarty.github.io/ttt-angul
     I want to see available moves, 
     so that I can know where can I make my move.
 
-#### > Game over  
+#### Game over  
 
     As a player, 
     I want to be told when the game is over,
@@ -57,7 +57,7 @@ You can test a fully working live demo at https://goformarty.github.io/ttt-angul
     I want to restart game as soon as it’s over, 
     so that I can choose to play again.
     
-     ** As a player, 
+    ** As a player, 
     I want to see the score board, 
     so that I can know how many points I have.
     
