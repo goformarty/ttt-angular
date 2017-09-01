@@ -1,6 +1,6 @@
 #TIC-TAC-TOE 
 ============
-![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://goformarty.github.io/ttt-angular/)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://goformarty.github.io/ttt-angular/)
 
 This is 2-Player Tic Tac Toe game powered by Angular4.
 
