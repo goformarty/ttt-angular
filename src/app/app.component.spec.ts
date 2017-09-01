@@ -1,3 +1,4 @@
+import { ModalComponent } from './modal/modal.component';
 import { TileComponent } from './tile/tile.component';
 import { TestBed, async } from '@angular/core/testing';
 
@@ -8,7 +9,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        TileComponent
+        TileComponent,
+        ModalComponent
       ],
     }).compileComponents();
   }));

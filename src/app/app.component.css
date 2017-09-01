@@ -56,9 +56,9 @@ button {
     text-decoration: none;
    border: none;
    transition-duration: 2s;
-  }
+}
   
-  button:hover {
+button:hover {
     background-color: #faa076;
     background-image: -webkit-linear-gradient(top, #faa076, #fa806e);
     background-image: -moz-linear-gradient(top, #faa076, #fa806e);
@@ -68,3 +68,6 @@ button {
     text-decoration: none;
   }
 
+.displayModal {
+    color: blue;
+}
