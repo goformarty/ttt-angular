@@ -56,17 +56,24 @@ You can test a fully working live demo at https://goformarty.github.io/ttt-angul
     so that whether I won or not.
     
     As a player, 
+    I want to restart game as soon as it’s over, 
+    so that I can choose to play again.
+    
+     ** As a player, 
     I want to see the score board, 
     so that I can know how many points I have.
     
-    As a player, 
+    ** As a player, 
     I want the score board to update automatically after each game, 
     so that I know how many points I have.
     
-    As a player, 
-    I want the game to restart as soon as it’s over, 
-    so that I can choose to play again.
-    
+---
+
+## What can be added:
+
+- score board;
+- player vs computer
+
 ---
 
 ## Local setup
