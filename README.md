@@ -1,3 +1,16 @@
+#TIC-TAC-TOE 
+============
+![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://goformarty.github.io/ttt-angular/)
+
+This is 2-Player Tic Tac Toe game powered by Angular4.
+
+![Game screenshot](/src/assets/Screenshot.png?raw=true "Game screenshot")
+
+## Demo
+You can test a fully working live demo at https://goformarty.github.io/ttt-angular/.
+
+---
+
 # TttAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.

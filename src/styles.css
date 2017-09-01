@@ -1,4 +1,6 @@
+@import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300');
+
 
 body {
     margin-top: 40px;
