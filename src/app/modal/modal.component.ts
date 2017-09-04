@@ -8,4 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ModalComponent {
 @Input() displayModal;
+
+closeModal() {
+  
+}
 }
